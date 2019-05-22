@@ -1,0 +1,139 @@
+ {% extends 'pages/navbar.html' %}
+    {% block title %}Lost & Found{% endblock %}
+    {% block home_active %}is-active{% endblock %}
+    {% block body %}
+    <style type="text/css">
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+section {
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 34, 76, 0.9), rgba(0, 34, 76, 0.9)),
+url(https://media.nbcphiladelphia.com/images/1200*675/phi-missing-collage2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+body{
+	color: white;
+	/*text-shadow: 1px 1px grey;*/
+}
+/*p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+  color: white;
+}*/
+
+footer{
+	color: blue;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 200px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<section id="services" class="service-item">
+       <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="media services-wrap wow fadeInDown">
+                        <!-- <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services1.png">
+                        </div> -->
+                        <div class="media-body">
+                            
+                            <p style ="letter-spacing: 3px; text-indent: 50px; text-align: justify; color:#dee5e8; ">
+                                Among all the persons who are reported to be missing, actually only few of them are out of our reach. Most of them are waiting somewhere for someone to help them connect with their family.
+                                Missing person cases present a significant challenge to law enforcement due to the lack of technology.Human identification is considered one of the major issue concerning missing people.
+                                Children and senior citizens sometimes do not even remember their names so we can’t expect them to remember more details about them. So the police do not have anything except their face to identify them.
+
+
+                                <br/>
+								<br/>
+                                That “Someone” can be you or anyone like us. 
+                                <br/>
+								<br/>
+                                Everyone is having smart phones and internet connectivity. Let us march forward holding hand in hand so that someday we can hold the hands of those people who are eagerly waiting for someone like us. 
+                                At <span class='mainsite'>lostpeoplerecognition.com</span> we do our best to find missing people with the help of face recognition. People upload the picture of children or adults who they think might be lost / separated from family and need help. Then lostpeoplerecognition.com matches the photo against database to help the missing person to reunite with their family.
+                                A small effort from you will help us reunite them with their families. Let happiness flow again. 
+                                <br/>
+
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                                                              
+            </div>
+        </div>
+    </section>
+    <br><br><br><br>
+    <div class="row">
+  <div class="column" style="background-color:#031f42;"><br><!-- <span class="glyphicon glyphicon-camera"></span> --><i class="fa fa-camera-retro fa-6x center" style="font-size:60px;"></i><br><h1 align="center"><span>Upload photos</span></h1>
+                        <p style =" text-align: center;">
+                            Uploading picture will improve search results quality.
+                        </p>
+  </div>
+  <div class="column" style="background-color:#022651;"><br>
+    <i class="fa fa-id-badge fa-6x center" style="font-size:60px;"></i><br><h1 align="center"><span>Select Faces</span></h1>
+                        <p style =" text-align: center;">
+                            Uploaded Photos must belong to one person
+                        </p>
+  </div>
+  <div class="column" style="background-color:#052a5b;"><br>
+    <image src="http://files.softicons.com/download/toolbar-icons/blue-bits-icons-by-icojam/png/256x256/2_033.png" height="60" width ="60" class="center"><br><h3 align="center"><span>Search our database</span></h3>
+                        <p align="center">
+                            The search results will be ready in few seconds!
+                        </p>
+  </div>
+</div>
+<div class="cll">
+	<section id="feature">
+        <div class="container" >
+            <div class="col-sm-6">
+                <center>
+			<a href="{% url 'accounts:login' %}">
+				<br><br><h2 class="btn btn-primary btn-h2"><b>I need help in <br/>finding someone</h2></b>
+			</a>
+            <p style="width:70%;font-weight: 600;letter-spacing: 3px;">Upload the photo and fill in the information of the missing person </p>
+            </center>
+        </div>
+         <div class="col-sm-6">
+            <center>
+            <a href="{% url 'accounts:login' %}">             
+                <br><br><h2 class="btn btn-primary btn-h2" style="padding:15px 20px;"><b>I want to help</h2></b>  
+            </a>
+            <p style="width:70%;font-weight: 600;letter-spacing: 3px;">Upload photo or tell us about the person you feel could be 'missing' person.</p>
+            </center>
+        </div>
+		</div>
+	</section>
+    {% endblock %}

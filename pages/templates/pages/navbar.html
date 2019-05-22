@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title> {% block title %}Home{% endblock %}</title>
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT34bYJD0ccV1wVhCxLZh1TqZjSftAI2-NDwurSgOttRcJooqp3mQ" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <style type="text/css">
+    .footer{
+      background: black;
+      color: #fff;
+      height: 50px;
+    }
+    .navbar{
+      background-color: black;
+    }
+    .navbar-item{
+      color: white;
+    }
+    span{
+            font-size: 16px;
+        font-family: 'Roboto Condensed', sans-serif;}
+    a.bd-tw-button.button{
+        font-family: BlinkMacSystem;
+        font-size: 16px;
+        padding: 5px 12px;
+    }
+    a.bd-tw-button.button:hover {
+        font-family: BlinkMacSystem;
+        color: white;
+        font-size: 16px;
+        padding: 5px 12px;
+        background-color: black;
+    }
+    a.button.is-primary{
+        font-family: BlinkMacSystem;
+        font-size: 16px;
+        padding: 5px 12px;
+        background-color: grey;
+        /*border: 2px solid #bcbcc6;*/
+    }
+
+     a.button.is-primary:hover {
+        font-family: BlinkMacSystem;
+        font-size: 16px;
+        padding: 5px 12px;
+        background-color: black;
+        border: 2px solid white;
+    }
+    a.navbar-link{
+        color: white;
+    }
+    a.navbar-item{
+        color: white;
+        background-color: black;
+    }
+      .navbar-dropdown{
+          background-color: black;
+      }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'pages:home' %}">
+      <img src="https://extramusicnew.files.wordpress.com/2012/07/guy-j-lost-and-found.jpg" style="background-color: white;-webkit-filter: invert(1); filter: invert(1);" alt="IMG" width="112" height="28">
+    </a>
+
+    <div class="navbar-burger burger" data-target="navmenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navmenu" class="navbar-menu">
+    <div class="navbar-start">
+      <!-- HOME -->
+      <a class="navbar-item" href="{% url 'pages:home' %}">
+        <span class="bd-emoji">🏠</span>&nbsp; Home
+      </a>
+      <!-- ABOUT US -->
+      <a class="navbar-item" href="{% url 'pages:about_us' %}">
+        <span class="bd-emoji">📖</span>&nbsp; About Us
+      </a>
+      <!-- CONTACT US -->
+      <a class="navbar-item " href="{% url 'pages:contact_us' %}">
+        <span class="bd-emoji">📫️</span>&nbsp; Contact Us
+      </a>
+      <a class="navbar-item " href="{% url 'register:register' %}">
+        <span class="bd-emoji">📋</span> &nbsp;Register
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <span class="bd-emoji">🔍️</span> &nbsp;Search
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="{% url 'search:search' %}">
+            Name Search
+          </a>
+          <a class="navbar-item" href="{% url 'search:advanced_search' %}">
+            Advance Search
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="{% url 'search:all_search' %}">
+            View All
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+
+            {% if not user.is_authenticated %}
+            {#Sign up#}
+          <p class="control">
+            <a class="bd-tw-button button" href="{% url 'accounts:sign_up' %}">
+              <span>
+                Sign Up
+              </span>
+            </a>
+          </p>
+            {#login#}
+          <p class="control">
+            <a class="button is-primary" href="{% url 'accounts:login' %}">
+                <span><i class="fa "></i></span>
+              <span>Log In</span>
+            </a>
+          </p>
+{% endif %}
+
+
+{% if user.is_authenticated%}
+{#                Profile#}
+                <p class="control">
+            <a class="bd-tw-button button" href="{% url 'accounts:showprofile' %}">
+              <span>
+                {{ user.get_username }}
+              </span>
+            </a>
+          </p>
+{#            logout#}
+             <p class="control">
+            <a class="button is-primary" href="{% url 'accounts:logout' %}">
+                <span>
+                <i class="fa "></i>
+              </span>
+              <span>Log Out</span>
+            </a>
+          </p>
+        {% endif %}
+
+        </div>
+    </div>
+  </div>
+  </div>
+</nav>
+
+
+<section>
+{% block body %}
+
+{% endblock %}
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+  // Get all "navbar-burger" elements
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any nav burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+
+        // Get the target from the "data-target" attribute
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+
+        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
+</script>
+  <div style="width: 100%">
+<footer class ="footer">
+    &copy;   Copyright 2019 lost&Found.com
+                    <br>All Rights Reserved <br/> Powered By SS Technologies </a>
+</footer>
+  </div>
+</body>
+</html>

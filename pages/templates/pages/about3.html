@@ -1,0 +1,108 @@
+ {% extends 'pages/navbar.html' %}
+    {% block title %}Lost & Found{% endblock %}
+    {% block home_active %}is-active{% endblock %}
+    {% block body %}
+    <style type="text/css">
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+section {
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 34, 76, 0.9), rgba(0, 34, 76, 0.9)),
+url(https://media.nbcphiladelphia.com/images/1200*675/phi-missing-collage2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+body{
+  color: white;
+  /*text-shadow: 1px 1px grey;*/
+}
+/* Create three equal columns that floats next to each other */
+
+footer{
+  color: blue;
+}
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<section id="services" class="service-item">
+       <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="media services-wrap wow fadeInDown">
+                        <!-- <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services1.png">
+                        </div> -->
+                        <div class="media-body">
+                          <br><br><br><br><br>
+                            
+                            <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+          Police efforts to locate and return missing persons is but one aspect of the larger set of problems related to the reasons people go missing. We have got together to address with the altruistic motive of helping reunite missing people with their families. A child may be lost and he may not find the way back home. An adult with mental health issues may be lost and there is no way he or she will be able to find his/her way back to their families. They languish and suffer while their families grieve and search frantically. Our mission is to help such lost children or adults reunite with their families.
+         </p>
+         <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+          We are gratified that eminent personalities have lent their support and backing for this project.
+        </p>
+
+         <!-- <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+            For Project Overview, Please Click <span style="font-size:18px"> <a style="color:#3386af" href="C:\Users\User\Local Settings\Desktop\minor new\minorproject\media\sss.pptx"> [Know More]</a></span>
+
+         </p> -->
+
+         <br><br><br><br><br><br><br>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                                                              
+            </div>
+        </div>
+        <div class="row">
+  <div class="column" style="background-color:#031f42; align-content: center;"><br>
+  <!-- <span class="glyphicon glyphicon-camera"></span> -->
+  <image src="data:image/png;base64,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" height="60" width ="60" class ="center"><br><br><h1 align="center"><b><span>1. Upload Photo</span></h1>
+                        <p style =" text-align: center;">
+                           The picture of the lost is uploaded to our website and by matching the person’s face to our vast database, we can identify him.
+                        </p>
+  </div>
+  <div class="column" style="background-color:#022651;"><br>
+    <!-- <i class="fa fa-smile fa-6x" style="font-size:60px;"></i> --><image src="http://imagus2014.onlinemarketingcollective.com/_assets/img/layout/icon-facial-recognition.png" height="60" width ="60" class="center"><br><br><h1 align="center"><span>2. Face Matching</span></h1>
+                        <p style =" text-align: center;">
+                         This website matches facial features of a lost individual to a well defined database of pictures of individuals to identify his identity among the database.    
+                        </p>
+  </div>
+  <div class="column" style="background-color:#052a5b;"><br>
+    <image src="https://www.forbes.com/brandvoice/wp-content/themes/bvt/assets/img/credibility-icon.png" height="60" width ="60" class="center">
+    <br><br><h3 align="center"><span>3. Result</span></h3>
+                        <p align="center">
+                            The person’s details, if found, are returned to the screen by which the person is recognised like his name, address etc.
+                        </p>
+  </div>
+</div>
+
+
+    {% endblock %}

@@ -1,0 +1,188 @@
+{% extends 'pages/navbar.html' %}
+    {% block title %}Lost & Found{% endblock %}
+    {% block home_active %}is-active{% endblock %}
+    {% block body %}
+    <style type="text/css">
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+section {
+  background-color: #404040;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(46, 47, 48, 0), rgba(12, 14, 25, 0.9)),
+url(https://assets.about.me/background/webdesign_1338484318_44.jpg);
+  background-size: cover;
+  background-position: center;
+}
+body{
+  color: white;
+  /*text-shadow: 1px 1px grey;*/
+}
+/* Create three equal columns that floats next to each other */
+
+footer{
+  color: blue;
+}
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.column1 {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  height: 100px; /* Should be removed. Only for demonstration */
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text {
+  color: #f2f2f2;
+  font-size: 35px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  text-align: left;
+}
+</style>
+<section>
+  <div class="column1" style="background-color:#0c0c0c; align-content: center;"><h1 style="font-size: 50px; text-shadow:currentColor; text-align: center; color: white;">ABOUT US</h1><br><br></div></section>
+<section>
+  <div class="photo-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="photo">
+    <img src="https://cdn-images-1.medium.com/max/1200/1*fZT8fZ5EGJqM6_J0c392Wg.jpeg" style="height:500px; width: 100%">
+    <div class="text">The Lost&Found Mission<br>
+By bringing people, information, and technology together,<br> helps resolve missing, unidentified, and unclaimed person cases
+</div>
+  </div>
+</div>
+</section>
+
+
+<section id="services" class="service-item">
+       <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="media services-wrap wow fadeInDown">
+                        <!-- <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services1.png">
+                        </div> -->
+                        <div class="media-body">
+                          <br><br>
+
+                            <strong>
+                            
+                            <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+
+                              In India a missing person is defined as anyone who is reported missing to police, whose whereabouts are unknown, and where there are fears for the safety or concern for the welfare of that person.
+                              <br><br>
+
+A long-term missing person is someone who has been missing for more than three months.<br><br>
+
+Anyone, regardless of gender, age, ethnicity or educational background, may become a missing person; however, adults are more likely to be listed as long-term missing persons.</p>
+<br><br>
+                            <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+          Police efforts to locate and return missing persons is but one aspect of the larger set of problems related to the reasons people go missing. We have got together to address with the altruistic motive of helping reunite missing people with their families. A child may be lost and he may not find the way back home. An adult with mental health issues may be lost and there is no way he or she will be able to find his/her way back to their families. They languish and suffer while their families grieve and search frantically. Our mission is to help such lost children or adults reunite with their families.
+
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<br>
+</strong>
+<section>
+  
+<div class="row">
+  <div class="column" style="background-color:#0c0c0c; align-content: center;"><br>
+  <!-- <span class="glyphicon glyphicon-camera"></span> -->
+  <image src="data:image/png;base64,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" height="60" width ="60" class ="center"><br><br><h1 align="center"><b><span>1. Upload Photo</span></h1>
+                        <p style =" text-align: center;">
+                           The picture of the lost is uploaded to our website and by matching the person’s face to our vast database, we can identify him.
+                        </p>
+  </div>
+  <div class="column" style="background-color:#1d1e1e;"><br>
+    <!-- <i class="fa fa-smile fa-6x" style="font-size:60px;"></i> --><image src="http://imagus2014.onlinemarketingcollective.com/_assets/img/layout/icon-facial-recognition.png" height="60" width ="60" class="center"><br><br><h1 align="center"><span>2. Face Matching</span></h1>
+                        <p style =" text-align: center;">
+                         This website matches facial features of a lost individual to a well defined database of pictures of individuals to identify his identity among the database.    
+                        </p>
+  </div>
+  <div class="column" style="background-color:#343838;"><br>
+    <image src="https://www.forbes.com/brandvoice/wp-content/themes/bvt/assets/img/credibility-icon.png" height="60" width ="60" class="center">
+    <br><br><h3 align="center"><span>3. Result</span></h3>
+                        <p align="center">
+                            The person’s details, if found, are returned to the screen by which the person is recognised like his name, address etc.
+                        </p>
+  </div>
+</div>
+
+
+
+</section>
+<section id="services" class="service-item">
+       <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="media services-wrap wow fadeInDown">
+                        <!-- <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services1.png">
+                        </div> -->
+                        <div class="media-body">
+                          <br><br>
+
+                       
+          
+         <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+          Tracking missing persons and identifying unidentified bodies have become easier for the police with the availability of information online. The police are now taking steps to empower the public in getting access to the same content so that the common man can track missing persons online.
+        </p><br><br>
+        <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+           Earlier the respective police station would send the pictures of missing persons or unidentified bodies for publishing in newspapers to identify or trace the persons. It was also manually sent to the nearby districts and the pictures were verified with that of the list of missing persons or unidentified bodies in those districts. But this was a highly cumbersome and time consuming process. Now, the pictures and the details of missing persons and unidentified bodies are uploaded online by the respective police stations soon after they received a complaint.
+        </p><br><br>
+        <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+          A senior police officer in the city said that the latest process has been of great help to the department over the last five years. The local police try to match the identity of the unidentified bodies here with the identity of persons who went missing in other places with the data available on the Internet. This has also helped in detecting such cases.
+        </p><br><br>
+        <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+           The police said that the recent effort to publicise the websites among the public was done to help them get direct access to information available to the police themselves. While the police have publicised a handful of websites where public could search for missing persons website in has more options using which the search could be made. One of the most important search features that only this website has face matching.
+        </p>
+
+         <!-- <p style ="text-indent: 50px; text-align: justify; letter-spacing: 3px; color: white;">
+            For Project Overview, Please Click <span style="font-size:18px"> <a style="color:#3386af" href="C:\Users\User\Local Settings\Desktop\minor new\minorproject\media\sss.pptx"> [Know More]</a></span>
+
+         </p> -->
+
+         <br><br><br><br><br><br><br>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                                                              
+            </div>
+        </div>
+        
+    {% endblock %}

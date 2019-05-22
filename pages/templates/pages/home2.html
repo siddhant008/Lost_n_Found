@@ -1,0 +1,82 @@
+ {% extends 'pages/navbar.html' %}
+    {% block title %}Lost & Found{% endblock %}
+    {% block home_active %}is-active{% endblock %}
+    {% block body %}
+    <style type="text/css">
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+section {
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 34, 76, 0.9), rgba(0, 34, 76, 0.9)),
+url(https://media.nbcphiladelphia.com/images/1200*675/phi-missing-collage2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+body{
+	color: white;
+	/*text-shadow: 1px 1px grey;*/
+}
+/*p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+  color: white;
+}*/
+footer{
+	color: blue;
+}
+</style>
+<section id="services" class="service-item">
+       <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="media services-wrap wow fadeInDown">
+                        <!-- <div class="pull-left">
+                            <img class="img-responsive" src="images/services/services1.png">
+                        </div> -->
+                        <div class="media-body">
+                            
+                            <p style ="letter-spacing: 3px; text-indent: 50px; text-align: justify; color:#dee5e8; ">
+                                Among all the persons who are reported to be missing, actually only few of them are out of our reach. Most of them are waiting somewhere for someone to help them connect with their family.
+                                <br/>
+								<br/>
+                                That “Someone” can be you or anyone like us. 
+                                <br/>
+								<br/>
+                                Everyone is having smart phones and internet connectivity. Let us march forward holding hand in hand so that someday we can hold the hands of those people who are eagerly waiting for someone like us. 
+                                At <span class='mainsite'>lostpeoplerecognition.com</span> we do our best to find missing people with the help of face recognition. People upload the picture of children or adults who they think might be lost / separated from family and need help. Then lostpeoplerecognition.com matches the photo against database to help the missing person to reunite with their family.
+                                A small effort from you will help us reunite them with their families. Let happiness flow again. 
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+    <br><br>
+<div class="cll">
+	<section id="feature">
+        <div class="container" >
+            <div class="col-sm-6">
+                <center>
+                <a href="{% url 'search:search' %}">
+                    <h2 class="btn btn-primary btn-h2" style="letter-spacing: 3px;">I need help in <br/>finding someone</h2>
+                </a>
+                <p style="width:70%;font-weight: 600;letter-spacing: 3px;">Upload the photo and fill in the information of the missing person </p>
+                </center>
+            </div>
+            <div class="col-sm-6">
+                <center>
+                <a href="{% url 'register:register' %}">
+                    <h2 class="btn btn-primary btn-h2" style="padding:15px 20px; letter-spacing: 3px;">I want to help</h2>
+                </a>
+                <p style="width:70%;font-weight: 600;letter-spacing: 3px;">Upload photo or tell us about the person you feel could be 'missing' person.</p>
+                </center>
+            </div>
+		</div>
+        <br><br>
+	</section>
+</div>
+    {% endblock %}
