@@ -1,0 +1,310 @@
+{% extends 'pages/navbar.html' %}
+{% block title %}{{ user.username }}'s Profile{% endblock %}
+
+{% block body%}
+{% if user.is_authenticated %}
+
+
+    <head>
+      <meta charset="UTF-8">
+      <title>View </title>
+
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato|Roboto'>
+      <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'>
+      <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+
+    <style type="text/css">
+      /*========================================================
+              Sitewide Styles
+        ==========================================================*/
+        /*multiple selector*/
+        * {
+          padding: 0;
+        }
+
+        body {
+          margin: 0 auto;
+          background: linear-gradient(to bottom, #edf1f2 0%,#d5e2f2 100%);
+          background-repeat: no-repeat;
+          color: black;
+          text-align: center;
+          align-items: center;
+          height: 100%;
+          min-height: 800px;
+          overflow: hidden;
+            font-size: 16px;
+          {#font-family: 'Lato', sans-serif;#}
+        }
+
+        /*========================================================
+                  Format Section
+        ========================================================*/
+        .box-main {
+          margin: 0 auto;
+          width: 80%;
+          margin-top: 40px;
+          margin-bottom: 40px;
+          background: white;
+          box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3), 0 85px 60px -25px rgba(0, 0, 0, 0.1);
+        }
+
+        /*========================================================
+                  Form Section
+        ========================================================*/
+        form {
+          margin: 0 auto;
+          width: 50%;
+          border-bottom-right-radius: 6px;
+          border-bottom-left-radius: 6px;
+          padding-bottom: 10px;
+        }
+        /*changing title style*/
+        h1 {
+          padding-top: 30px;
+          text-align: center;
+          color: #31bafd;
+          font-size: 26px;
+        }
+
+        /*========================================================
+                  input Section
+        ========================================================*/
+
+        /*Float Label main style*/
+        .float-label input, .float-label select {
+            -webkit-appearance: none;
+            outline: none;
+            border: none;
+            margin: 0 auto;
+            width: 100%;
+            display: block;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+            background: transparent;
+            color: #757575;
+            padding: 5px 15px 7px 10px;
+        }
+        /*add style to radio options*/
+
+        .radio-inline input[type=radio] {
+          position: static;
+          margin-left: 0;
+          padding-left: 0;
+        }
+        .radio-inline span {
+          line-height: 4;
+          font-size: 16px;
+          padding-left: 4px;
+        }
+
+         /*Style birthday select */
+        .float-label select {
+          display: inline-block;
+          width: 24%;
+          margin-left: 20px;
+          font-size: 16px;
+          color: black;
+        }
+        .float-label select:first-child{
+          width: 30%;
+        }
+        .float-label > select option:first-child {
+          color: #77cee2;
+        }
+
+
+
+        /*========================================================
+                  Button Section
+        ========================================================*/
+        /*changing button box style*/
+        #sendData{
+          width: 225px;
+          margin-top: 50px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          outline: 0;
+          border-style: none;
+          background: #31bafd;
+          padding: 10px 15px;
+          color: white;
+          font-weight: 200;
+          font-size: 18px;
+          box-shadow: rgba(0, 0, 0, 0.8);
+        }
+        .message a:hover {
+          color: black;
+        }
+
+        /*========================================================
+              Profile Section
+        ========================================================*/
+        /*Add margin to profile*/
+        #updateProfile {
+          padding: 20px 60px;
+        }
+
+        .user-left {
+          padding-top: 40px;
+        }
+
+         /*create a round container to hide overflow image*/
+        .user-left span {
+          display: inline-block;
+          width: 250px;
+          height: 250px;
+          overflow: hidden;
+          text-align: center;
+          /*add shadow and border*/
+          border: 2px solid #a9a9a9;
+          cursor: pointer;
+          -webkit-border-radius: 50%;
+          border-radius: 50%;
+          -webkit-transition: background-color 0.3s ease;
+          transition: background-color 0.3s ease;
+          box-shadow: 0px 20px 25px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        /*change image effect when hover*/
+        .user-left span:hover{
+          border-color: #b3b3b3;
+          box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.3);
+          transform: translateY(-1px);
+        }
+
+        /*change font margin and padding*/
+        .user-left h1 {
+          padding-top: 0;
+        }
+
+        /*center image and make it round*/
+        .user-image {
+          left: 50%;
+          margin-left: -100%;
+          position: relative;
+          width: auto !important;
+          height: 250px !important;
+        }
+
+        /*change image opacity*/
+        .user-image:hover {
+          opacity: 0.5;
+          filter: alpha(opacity=50);
+        }
+
+        .user-right {
+          padding: 20px 20px 40px;
+          min-height: 200px;
+
+          /*margin-left: 80px;*/
+        }
+
+        /*Change profile title*/
+        .user-right h2 {
+          text-align: left;
+          font-family: 'Roboto', Arial, sans-serif;
+          font-weight: 400;
+          font-size: 3em;
+        }
+        .user-right span {
+          color: #d2d2d2;
+        }
+
+        .user-info {
+          padding: 18px;
+          width: 100%;
+          min-height: 200px;
+          border-radius: 3px;
+          background-color: transparent;
+          box-shadow: 0px 0px 2px 2px rgba(65, 66, 66, 0.4);
+        }
+
+
+        td p{
+          font-size: 20px;
+          padding: 10px 15px 10px 10px;
+          text-align: left;
+        }
+        .footer{
+  background: black;
+  color: #fff;
+  height: 50px;
+  left:0;
+  text-align: left;
+  padding-top: 40px;
+  font-size: 15px;
+} 
+.navbar{
+  background-color: black;
+  font-size: 16px;
+}   
+a.navbar-link{
+        color: white;
+        font-size: 16px;
+    }
+    a.navbar-item{
+        color: white;
+        background-color: black;
+        font-size: 15px;
+    }
+    </style>
+    </head>
+
+
+        <body>
+            <div class="box-main">
+                <!-- Display User Profile  -->
+                <!-- =============================================================== -->
+                <div id="updateProfile" class="row">
+                            <!-- Update Name -->
+                            <div class="col-md-4 user-left">
+                              <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9HFLw9fcwYyNkUls-_g8umpEqAZlp4WHViwoFqr9vq3wqhlmu" alt="user image" class="user-image" id="updateImage"></span>
+                            </div>
+         <!-- Update Other information -->
+                   {% if user.profile.first_name == '' %}
+                       <p><strong style="color: #ff0000;">Please Create Your Profile First!!</strong></p>
+                   {% endif %}
+                            <div class="col-md-8 user-right">
+                    <h2>Profile <span style="font-size: 34px">Info</span></h2>
+                    <div class="user-info">
+                      <table>
+                        <tr>
+                            <td><p>First Name :</p></td>
+                            <td><p><i>{{ user.profile.first_name }}</i></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Last Name :</p></td>
+                            <td><p><i>{{ user.profile.last_name }}</i></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Email Address : </p></td>
+                            <td><p><i>{{ user.profile.email }}</i></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Phone Number</p></td>
+                            <td><p><i>{{ user.profile.number }}</i></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Gender</p></td>
+                            <td><p><i>{{ user.profile.gender}}</i></p></td>
+                        </tr>
+                        </table>
+                      </div>
+                    </div>
+                        <a href="{% url 'accounts:profile' %}"><button type="Submit" name="button" id="sendData">{% if user.profile.first_name == '' %}Create{% else %}Edit{% endif %} Profile</button></a>
+                  </div>
+                </div>
+          </body>
+{#    {% else %}#}
+{#        <script>#}
+{#         {#}
+{#          location.replace("{% url 'accounts:profile' %}")#}
+{#        }#}
+{#        </script>#}
+{#    {% endif %}#}
+{% endif %}
+
+{% endblock %}

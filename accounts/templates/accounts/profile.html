@@ -1,0 +1,406 @@
+ {% extends 'pages/navbar.html' %}
+    {% block title %}Create Profile{% endblock %}
+{% block body %}
+
+    <head>
+  <meta charset="UTF-8">
+  <title>Profile </title>
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato|Roboto'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+
+<style type="text/css">
+  /*========================================================
+          Sitewide Styles
+    ==========================================================*/
+    /*multiple selector*/
+    * {
+      padding: 0;
+    }
+
+    body {
+      margin: 0 auto;
+      background: linear-gradient(to bottom, #edf1f2 0%, rgba(52, 55, 59, 0.69) 100%);
+      background-repeat: no-repeat;
+        color: black;
+      text-align: center;
+      align-items: center;
+      height: 100%;
+      min-height: 800px;
+      overflow: hidden;
+      font-family: 'Lato', sans-serif;
+    }
+
+    /*========================================================
+              Format Section
+    ========================================================*/
+    .box-main {
+      margin: 0 auto;
+      width: 80%;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      background: rgba(232, 232, 232, 0.91);
+      box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3),
+      0 55px 50px -35px rgba(0, 0, 0, 0.3),
+      0 85px 60px -25px rgba(0, 0, 0, 0.1);
+    }
+
+    /*========================================================
+              Form Section
+    ========================================================*/
+    form {
+      margin: 0 auto;
+      width: 50%;
+      border-bottom-right-radius: 6px;
+      border-bottom-left-radius: 6px;
+      padding-bottom: 10px;
+    }
+    /*changing title style*/
+    h1 {
+      padding-top: 30px;
+      text-align: center;
+      color: #77cee2;
+      font-size: 26px;
+    }
+
+    /*========================================================
+              input Section
+    ========================================================*/
+
+    /*Float Label main style*/
+    .float-label input, .float-label select {
+        -webkit-appearance: none;
+        outline: none;
+        border: none;
+        margin: 0 auto;
+        width: 100%;
+        display: block;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        font-family: 'Lato', sans-serif;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+        background: transparent;
+        color: #757575;
+        padding: 5px 15px 7px 10px;
+    }
+
+    .title {
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      background: transparent;
+      color: #757575;
+      font-weight: normal;
+      margin-left: 7px;
+    }
+
+
+
+    /*add style to radio options*/
+    .option-input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+      position: relative;
+      top: 13.33333px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 15px;
+      width: 15px;
+      transition: all 0.15s ease-out 0s;
+      background: #cbd1d8;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 0.5rem;
+      outline: none;
+      position: relative;
+      z-index: 1000;
+    }
+    .option-input:hover {
+      background: #9faab7;
+    }
+    .option-input:checked {
+      background: #77cee2;
+    }
+    .option-input:checked::before {
+      height: 15px;
+      width: 15px;
+      position: absolute;
+      content: '✔';
+      display: inline-block;
+      font-size: 12px;
+      text-align: center;
+      line-height: 15px;
+    }
+    .option-input:checked::after {
+      -webkit-animation: click-wave 0.65s;
+      -moz-animation: click-wave 0.65s;
+      animation: click-wave 0.65s;
+      background: #77cee2;
+      content: '';
+      display: block;
+      position: relative;
+      z-index: 100;
+    }
+    .option-input {
+      border-radius: 50%;
+    }
+    .option-input::after {
+      border-radius: 50%;
+    }
+    .radio-inline input[type=radio] {
+      position: static;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    .radio-inline {
+      vertical-align: baseline;
+    }
+    .radio-inline span {
+      line-height: 4;
+      font-size: 16px;
+      padding-left: 4px;
+    }
+
+     /*Style birthday select */
+    .float-label select {
+      display: inline-block;
+      width: 24%;
+      margin-left: 20px;
+      font-size: 16px;
+      color: black;
+    }
+    .float-label select:first-child{
+      width: 30%;
+    }
+    .float-label > select option:first-child {
+      color: #77cee2;
+    }
+
+
+
+    /*========================================================
+              Button Section
+    ========================================================*/
+    /*changing button box style*/
+    #sendData{
+      width: 150px;
+      margin-top: 50px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      outline: 0;
+      border-style: none;
+      background: #77cee2;
+      padding: 10px 15px;
+      color: white;
+      font-weight: 200;
+      font-size: 18px;
+      box-shadow: rgba(0, 0, 0, 0.8);
+    }
+    .message a:hover {
+      color: black;
+    }
+    /*========================================================
+          Profile Section
+    ========================================================*/
+    /*Add margin to profile*/
+     /*create a round container to hide overflow image*/
+    .user-left span {
+      display: inline-block;
+      width: 250px;
+      height: 250px;
+      overflow: hidden;
+      text-align: center;
+      /*add shadow and border*/
+      border: 2px solid #a9a9a9;
+      cursor: pointer;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      -webkit-transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease;
+      box-shadow: 0px 20px 25px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    /*change image effect when hover*/
+    .user-left span:hover{
+      border-color: #b3b3b3;
+      box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /*change font margin and padding*/
+    .user-left h1 {
+      padding-top: 0;
+    }
+    /*Change profile title*/
+    .user-right h2 {
+      text-align: left;
+      font-family: 'Roboto', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 3em;
+    }
+    .user-right span {
+      color: #d2d2d2;
+    }
+    td p{
+      font-size: 20px;
+      padding: 10px 15px 10px 10px;
+      text-align: left;
+    }
+    .footer{
+  background: black;
+  color: #fff;
+  height: 50px;
+  left:0;
+  text-align: left;
+  padding-top: 40px;
+  font-size: 15px;
+} 
+.navbar{
+  background-color: black;
+  font-size: 16px;
+}   
+a.navbar-link{
+        color: white;
+        font-size: 16px;
+    }
+    a.navbar-item{
+        color: white;
+        background-color: black;
+        font-size: 16px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="box-main">
+                    <!-- Create Your Profile -->
+                    <!-- =============================================================== -->
+                    <form action="" method="post" id="newProfile">
+                        {% csrf_token %}
+                      <h1 id="header">{% if user.profile.first_name == '' %}Create Your Profile{% else %}Edit Your Profile{% endif %}
+                        <!-- <br><i class="fa fa-camera-retro fa-lg"></i> -->
+                      </h1>
+                      <h1></h1>
+                      <!-- FIRST NAME -->
+                      <div class="float-label">
+                        <input type="text" name="fname" value="" id="fname" placeholder="First Name" required>
+                      </div>
+                      <br>
+                      <!-- LAST NAME -->
+                      <div class="float-label">
+                        <input type="text" name="lname" value="" id="lname" placeholder="Last Name" required>
+                      </div>
+                      <br>
+                      <!-- EMAIL ADDRESS -->
+                      <div class="float-label">
+                        <input type="email" name="email" value="" id="email" placeholder="Email Address" required>
+                      </div>
+                      <br>
+                      <!-- PHONE NUMBER -->
+                      <div class="float-label">
+                        <input type="tel" pattern="[0-9]{10}" name="number" value="{% if user.profile.number %}{{ user.profile.number }}{% else %}{% endif %}"
+                               oninvalid="this.setCustomValidity('Enter 10 digit number')" oninput="this.setCustomValidity('')" id="number" placeholder="Phone Number" required>
+                      </div>
+                      <br>
+                     <div class='row'>
+                       <!-- GENDER -->
+                       <div class=" gender">
+                         <div class="gender-title">
+                           <label for="gender" class="title">Gender:</label>
+                         </div>
+                         <div class="radio">
+                           <label class="radio-inline">
+                             <input type="radio" name="gender" id="Male" value="Male" class="option-input userGender" checked>
+                             <span>Male</span>
+                           </label>
+                           <label class="radio-inline">
+                             <input type="radio" name="gender" id="Female" value="Female" class="option-input userGender">
+                             <span>Female</span>
+                           </label>
+                         </div>
+                       </div>
+                     </div>
+                      <input type="submit" name="" value="{% if user.profile.first_name == '' %}Create{% else %}Edit{% endif %}" onclick="getUserData()" id="sendData">
+                       <input type="hidden" name="next" value="" />
+                    </form>
+        </div>
+
+<script>
+// function to get users data
+function getUserData() {
+    // store values
+    var fname = document.getElementById('fname').value;
+    var lname = document.getElementById('lname').value;
+    var email = document.getElementById('email').value;
+    var number = document.getElementById('phone').value;
+
+    if (!(length(number)==10))
+    {
+        alert("phone number is invalid");
+        return;
+    }
+    // ---  FIRST NAME  ---
+    // check if the username input is empty
+    if (fname == false) {
+        // send an alert if user name is empty
+        alert("you forgot to type your name");
+
+        // stop function if no answer
+        return;
+    }
+
+    // ---  LAST NAME  ---
+    // check if the username input is empty
+    if (lname == "") {
+        // send an alert if user name is empty
+        alert("you forgot to type your name");
+
+        // stop function if no answer
+        return;
+    }
+
+
+    // ---  EMAIL  ---
+    if (email == "") {
+        // send an alert if user email address is empty
+        alert("you forgot to add your email");
+
+        // stop function if no answer
+        return;
+    }
+
+    if (validateEmail(email) == false) {
+        // send an alert if user email address is empty
+        alert("please enter a valid email address");
+
+        // stop function if no answer
+        return;
+
+    }
+
+    // ---  GENDER  ---
+    // loop through all elements with class="userGender"
+    for (var i = 0; i < userGenderEls.length; i++) {
+        // if the radio was selected by the user, do this
+        if (userGenderEls[i].checked) {
+            // set value of answer to the value in the radio item
+            userGender = userGenderEls[i].value;
+        }
+        ;
+    }
+    ;
+}
+    </script>
+
+
+</body>
+
+
+{% endblock %}

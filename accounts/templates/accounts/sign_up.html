@@ -1,0 +1,132 @@
+ {% extends 'pages/navbar.html' %}
+    {% block title %}Sign Up{% endblock %}
+    {% block home_active %}is-active{% endblock %}
+    {% block body %}
+
+{% if not user.is_authenticated %}
+
+
+<style type="text/css">
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+/*body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  letter-spacing: 1px;
+}*/
+body {
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            font-size: 16px;
+            line-height: 30px;
+            color: #777;
+            background: #38383a;
+            background-image: linear-gradient(rgba(46, 47, 48, 0), rgba(66, 68, 71, 0.9)),
+            url(https://assets.about.me/background/webdesign_1338484318_44.jpg);
+            background-position: center;
+            background-size: contain;
+    }
+section {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(46, 47, 48, 0), rgba(66, 68, 71, 0.9)),
+            url(https://assets.about.me/background/webdesign_1338484318_44.jpg);
+            background-position: center;
+            background-size: contain;
+}
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  text-align: center;
+}
+.login-form {
+  position: relative;
+  box-sizing: border-box;
+  padding: 60px 30px;
+  transition: 0.5s;
+}
+.login-form:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.login-form h1 {
+  margin: 0 0 20px;
+  color: white;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.login-form input {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  outline: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.login-form input::placeholder {
+  color: white;
+}
+.login-form input[type="submit"] {
+  color: white;
+  background-color: #0072ff;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.login-form input[type="submit"]:hover {
+  background-color: #005aca;
+}
+.login-form a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+}
+</style>
+{% block content %}
+<body>
+  <section>
+  <div class="container">
+    <div class="login-form">
+      <h1>Sign Up</h1>
+      <form action="" method="post">
+        {% csrf_token %}
+            <input type="text" name="username" id="id_username" placeholder="username">
+            <input type="password" name="password1" id="id_password1" placeholder="password">
+            <input type="password" name="password2" id="id_password2" placeholder="Confirm Password">
+            <input type="submit" name="" value="Sign Up">
+          <input type="hidden" name="next" value="" />
+      </form>
+      <a href="{% url 'accounts:login' %}">Already Have An Account?<br>Login Instead!</a>
+        {% if form.errors %}
+        {% for  field in form %}
+            {% for error in field.errors %}
+                <p style="color: #FF3A3A">{{ field.name }} : {{ error}}</p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% endif %}
+
+{% if user.is_authenticated %}
+    <script>
+             {
+              location.replace("{% url 'pages:home' %}")
+            }
+            </script>
+          </body>
+{% endif %}
+{% endblock %}
