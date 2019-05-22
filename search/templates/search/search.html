@@ -1,0 +1,163 @@
+{% extends 'pages/navbar.html' %}
+{% block title %}Search{% endblock %}
+{% block body %}
+
+<head>
+<style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+    .card {
+        padding: 3px;
+        line-height: 1.42857143;
+        background-color: #dddddd;
+        {#border: 1px solid #dddddd;#}
+        border-radius: 4px;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+    }
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgb(0, 0, 0);
+    }
+    .container {
+        padding: 2px 16px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    body{
+        font-weight: 100;
+        font-size: 16px;
+        line-height: 30px;
+        color: #777;
+        background: #38383a;
+        background: linear-gradient(rgba(46, 47, 48, 0), rgba(66, 68, 71, 0.9)),
+        url(https://assets.about.me/background/webdesign_1338484318_44.jpg);
+        background-position: center;
+        background-size: contain;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .row {
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+    .search {
+      width: 100%;
+      position: relative
+    }
+    .searchTerm {
+      float: left;
+      width: 100%;
+      border: 3px solid #000000;
+      padding: 15px;
+      height: 20px;
+      border-radius: 5px;
+      outline: none;
+      color: #00b4cc;
+    }
+
+    .searchTerm:focus{
+      color: #000000;
+    }
+
+    .searchButton {
+      position: absolute;
+      right: -50px;
+      width: 40px;
+      height: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.73);
+      background: #000000;
+      text-align: center;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+/*Resize the wrap to see the search bar change!*/
+    .wrap{
+      width: 30%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    @media (min-width: 768px) {
+        .col-sm-4 {
+            float: left;
+        }
+
+        .col-sm-4 {
+            width: 33.33333333%;
+            position: relative;
+            padding: 15px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .col-lg-2 {
+            float: left;
+        }
+
+        .col-lg-2 {
+            width: 16.66666667%;
+            position: relative;
+            padding: 15px;
+        }
+    }
+    section{
+        height: 1500px;
+    }
+    a{
+        align-self: center;
+        color: rgba(255,255,255,0.81);
+        padding-left: 300px;
+    }
+    a:hover {
+        color: #505050;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+<br><br><br>
+    {#SEARCH BAR#}
+     <div class="row">
+
+                        <div class="wrap">
+                           <div class="search">
+                               <form role="search" method="get" action="">
+                                    <input type="text" class="searchTerm" name="q" value="{{ request.GET.q }}" placeholder="Who are you looking for?" />
+                                    <button type="submit" class="searchButton">
+                                    <i class="fa fa-search"></i>
+                                    </button>
+                               </form>
+                           </div>
+                        </div>
+                  </div>
+        <a href="{% url 'search:advanced_search' %}">Don't Know your lost one's name? No worries, instead search with his face!</a>
+
+    {#ALL LOST ONES#}
+    <div class="row">
+            {% if registers %}
+                {% for register in registers %}
+                    <div class="col-sm-4 col-lg-2 ">
+                        <div class="card">
+                          <img src="{{ register.image_lost.url }}" alt="Lost" style="height: 251.41px;width:188.83px;background-size:cover;">
+                          <div class="container">
+                            <h4><b>{{ register.name_lost }}</b></h4>
+                            <p>{{ register.location_lost }}</p>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'pages/navbar.html' %}
+{% block title %}Advance Search{% endblock %}
+{% block body %}
+
+<head>
+<style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+    .card {
+        padding: 3px;
+        line-height: 1.42857143;
+        background-color: #dddddd;
+        border-radius: 4px;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+    }
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgb(0, 0, 0);
+    }
+        .container {
+            padding: 2px 16px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+    }
+    section{
+        height: 1108px;
+    }
+     body {
+        font-weight: 100;
+        font-size: 16px;
+        line-height: 30px;
+        color: #777;
+        background: #38383a;
+        background: linear-gradient(rgba(46, 47, 48, 0), rgba(66, 68, 71, 0.9)),
+               url(https://assets.about.me/background/webdesign_1338484318_44.jpg);
+        background-position: center;
+        background-size: contain;
+        font-family: 'Open Sans', sans-serif;
+    }
+    @media (min-width: 768px) {
+        .col-sm-4 {
+            float: left;
+        }
+
+        .col-sm-4 {
+            width: 33.33333333%;
+            position: relative;
+            padding: 15px;
+            {#margin: 15px;#}
+        }
+    }
+    @media (min-width: 1200px) {
+        .col-lg-2 {
+            float: left;
+        }
+
+        .col-lg-2 {
+            width: 16.66666667%;
+            position: relative;
+            padding: 15px;
+            {#margin: 15px;#}
+        }
+    }
+</style>
+</head>
+
+<body>
+
+{#ADVANCE SEARCH#}
+
+{#<br>#}
+{#<br>#}
+{#ALL LOST ONES#}
+<h1>
+        <div class="row">
+                {% for a in registers2 %}
+                    <div class="col-sm-4 col-lg-2 ">
+                        <div class="card">
+                          <img src="{{ a.image_lost.url }}" alt="Lost" style="height: 251.41px;width:188.83px;background-size:cover;">
+                          <div class="container">
+                            <h4><b>{{ a.name_lost }}</b></h4>
+                            <p>{{ a.location_lost }}</p>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+        </div>
+</h1>
+</body>
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends 'pages/navbar.html' %}
+
+{% block title %}Advance Search{% endblock %}
+
+{% block body %}
+
+
+<style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+    .card {
+        padding: 3px;
+        line-height: 1.42857143;
+        background-color: #dddddd;
+        {#border: 1px solid #dddddd;#}
+        border-radius: 4px;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+    }
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgb(0, 0, 0);
+    }
+        .container {
+        padding: 2px 16px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+    body {
+        font-weight: 100;
+        font-size: 16px;
+        line-height: 30px;
+        color: #777;
+        background: #38383a;
+        background: linear-gradient(rgba(46, 47, 48, 0), rgba(66, 68, 71, 0.9)),
+               url(https://assets.about.me/background/webdesign_1338484318_44.jpg);
+        background-position: center;
+        background-size: contain;
+        font-family: 'Open Sans', sans-serif;
+    }
+    @media (min-width: 768px) {
+        .col-sm-4 {
+            float: left;
+        }
+        .col-sm-4 {
+            width: 33.33333333%;
+            position: relative;
+            padding: 15px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .col-lg-2 {
+            float: left;
+        }
+        .col-lg-2 {
+            width: 16.66666667%;
+            position: relative;
+            padding: 15px;
+        }
+    }
+    .avatar-upload {
+      position: relative;
+      max-width: 205px;
+      margin: 50px auto;
+    }
+    .avatar-upload .avatar-edit {
+      position: absolute;
+      right: 25px;
+      z-index: 1;
+      top: 10px;
+    }
+    .avatar-upload .avatar-edit input {
+      display: none;
+    }
+    .avatar-upload .avatar-edit input + label {
+      display: inline-block;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 0;
+      border-radius: 100%;
+      background: #FFFFFF;
+      border: 1px solid transparent;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      font-weight: normal;
+      transition: all 0.2s ease-in-out;
+
+    }
+    .avatar-upload .avatar-edit input + label:hover {
+      background: #f1f1f1;
+      border-color: #d6d6d6;
+    }
+    .avatar-upload .avatar-edit input + label:after {
+      content: "\f040";
+      font-family: 'FontAwesome';
+      color: #757575;
+      position: absolute;
+      top: 2px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      margin: auto;
+    }
+    .avatar-upload .avatar-preview {
+      width: 192px;
+      height: 192px;
+      position: relative;
+      border: 6px solid #232323;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+    .avatar-upload .avatar-preview > div {
+      width: 100%;
+      height: 100%;
+      /*border-radius: 100%;*/
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    section{
+        height: 1200px;
+    }
+    a{
+        align-self: center;
+        color: rgba(255,255,255,0.81);
+        padding-left: 25%;
+    }
+    a:hover {
+        color: #505050;
+    }
+</style>
+
+
+<div class="container">
+        {#ADVANCE SEARCH#}
+        <div class="row">
+                <div class="container">
+                <p style="padding-left: 34%;color: white">~Upload an image to search for your lost ones~</p>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' name="unknown" id="imageUpload" accept=".png, .jpg, .jpeg" required/>
+                                <label for="imageUpload"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview"  style='background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAs5C2t_d3SNl-yJ8einpR-YhQBHzohwLPPLeOxW-My-UuCXz3");'>
+                                </div>
+                            </div>
+                            <input style="" type="submit" name="" value="SEARCH">
+                            <input type="hidden" name="next" value="" />
+                        </div>
+                    </form>
+                </div>
+        </div>
+</div>
+
+{#ALL LOST ONES#}
+        <div class="row">
+                {% for obj in ans %}
+{#                    <div class="col-sm-4 col-lg-2 ">#}
+                        <div class="card">
+                          <img src="{{ obj.image_lost.url }}" alt="Lost" style="height: 251.41px;width:188.83px;background-size:cover;">
+                          <div class="container">
+                            <h4><b>{{ obj.name_lost }}</b></h4>
+                            <p>{{ obj.location_lost }}</p>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+        </div>
+
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script>
+    	function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+    </script>
+
+{% endblock %}

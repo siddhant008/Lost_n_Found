@@ -1,0 +1,215 @@
+{% extends 'pages/navbar.html' %}
+{% block title %}Register Complaint{% endblock %}
+{% block home_active %}is-active{% endblock %}
+{% block body %}
+{% if user.is_authenticated %}
+    <style type="text/css">
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700');
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto Condensed', sans-serif;
+
+      letter-spacing: 1px;
+    }
+    .navbar{
+  background-color: black;
+}
+.navbar-item{
+  color: white;
+}
+    section {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(rgba(28, 28, 29, 0), rgba(66, 68, 71, 0.9)),
+                   url(https://assets.about.me/background/webdesign_1338484318_44.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+    .container {
+      position: absolute;
+      top:60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 340px;
+      text-align: center;
+    }
+    .login-form {
+      position: relative;
+      box-sizing: border-box;
+      padding: 10px 30px;
+      transition: 0.5s;
+    }
+    .login-form:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .login-form h1 {
+      margin: 0 0 20px;
+      color: white;
+      font-size: 30px;
+      text-transform: uppercase;
+    }
+    .login-form input {
+      display: block;
+      width: 100%;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      border-radius: 25px;
+      outline: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: white;
+      text-transform: uppercase;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    .login-form input::placeholder {
+      color: white;
+    }
+    .login-form input[type="submit"] {
+      color: white;
+      background-color: #0072ff;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .login-form input[type="submit"]:hover {
+      background-color: #005aca;
+    }
+    .login-form a {
+      text-decoration: none;
+      color: white;
+      text-transform: uppercase;
+    }
+    .avatar-upload {
+      position: relative;
+      max-width: 205px;
+      margin: 50px auto;
+    }
+    .avatar-upload .avatar-edit {
+      position: absolute;
+      right: 20px;
+      z-index: 1;
+      top: 10px;
+    }
+    .avatar-upload .avatar-edit input {
+      display: none;
+    }
+    .avatar-upload .avatar-edit input + label {
+      display: inline-block;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 0;
+      border-radius: 100%;
+      background: #FFFFFF;
+      border: 1px solid transparent;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      font-weight: normal;
+      transition: all 0.2s ease-in-out;
+    }
+    .avatar-upload .avatar-edit input + label:hover {
+      background: #f1f1f1;
+      border-color: #d6d6d6;
+    }
+    .avatar-upload .avatar-edit input + label:after {
+      content: "\f040";
+      font-family: 'FontAwesome';
+      color: #757575;
+      position: absolute;
+      top: 4px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      margin: auto;
+    }
+    .avatar-upload .avatar-preview {
+      width: 192px;
+      height: 192px;
+      position: relative;
+      /*border-radius: 100%;*/
+      border: 6px solid #F8F8F8;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+    .avatar-upload .avatar-preview > div {
+      width: 100%;
+      height: 100%;
+      /*border-radius: 100%;*/
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+</style>
+<section>
+
+  <div class="container">
+    <div class="login-form">
+      <h1>Register</h1>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+      <form class="form-horizontal" action="{% url 'register:register' %}" method="post" enctype="multipart/form-data" >
+          {% csrf_token %}
+            
+            <div class="avatar-upload">
+                <div class="avatar-edit">
+                    <input type='file' name="{{ form.image_lost.name }}" id="imageUpload" accept=".png, .jpg, .jpeg" required/>
+                    <label for="imageUpload"></label>
+                </div>
+                <div class="avatar-preview">
+                    <div id="imagePreview" style='background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAs5C2t_d3SNl-yJ8einpR-YhQBHzohwLPPLeOxW-My-UuCXz3");'>
+                    </div>
+                </div>
+                <p style="color: #ced1ca">"Please Select an Image."</p>
+            </div>
+            <input type="text" name="{{ form.name_lost.name }}" id="{{ form.name_lost.id_for_label }}" placeholder="Name Of Lost" required>
+            <input type="text" name="{{ form.location_lost.name }}" id="location_lost" placeholder="Location Of Lost" required>
+            <input type="text" name="{{ form.gender_lost.name }}" id="gender_lost" placeholder="Gender Of Lost" required>
+            <input type="submit" name="" value="Submit">
+            <input type="hidden" name="next" value="" />
+      </form>
+    {% if form.errors %}
+        {% for  field in form %}
+            {% for error in field.errors %}
+                <p style="color: #FF3A3A">{{ field.name }} : {{ error}}</p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+      <a href="{% url 'search:search' %}">Search for a lost one?</a>
+    </div>
+  </div>
+</section>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script>
+        function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+    </script>
+{% endif %}
+
+{% if not user.is_authenticated %}
+     <script>
+             {
+              location.replace("{% url 'accounts:login' %}")
+            }
+            </script>
+{% endif %}
+{% endblock %}
